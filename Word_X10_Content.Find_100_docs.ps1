@@ -4,6 +4,9 @@ $docPath = "\\kyv-s-f02\FileShare\Папка обміну\IT\Насіння Кр
 $oldWord = "Вступ"
 $newWord = "!!!!!!!!"
 $SummaryTime = 0
+$hostName = $env:COMPUTERNAME
+
+Write-Host "Тестування Word.Content.Find. $totalTimes тестів по $times ітерацій. На $hostName = $env:COMPUTERNAME." -ForegroundColor Green
 
 for ($j = 1; $j -le $totalTimes; $j++) {
     $dt = Get-Date
@@ -11,7 +14,6 @@ for ($j = 1; $j -le $totalTimes; $j++) {
     $startTime = Get-Date
 
     try {
-        # Ініціалізація Word
         $wordApp = New-Object -ComObject Word.Application
         $wordApp.Visible = $false
 
@@ -74,7 +76,7 @@ for ($j = 1; $j -le $totalTimes; $j++) {
     $pause = Get-Random -Minimum 30 -Maximum 120
     
     if ($j -lt $totalTimes) {
-        $pause = Get-Random -Minimum 30 -Maximum 600
+        $pause = Get-Random -Minimum 30 -Maximum 120
         Write-Host "Роблю паузу в $pause секунд." -ForegroundColor Gray
         Start-Sleep -Seconds $pause
     }
@@ -82,4 +84,4 @@ for ($j = 1; $j -le $totalTimes; $j++) {
 }
 
 $averageTime = $SummaryTime / $totalTimes
-Write-Host "Всі тести завершено. Середній час виконання 100 ітерацій пошуку по документу - $averageTime" -ForegroundColor -Cyan
+Write-Host "Всі тести завершено. Середній час виконання 100 ітерацій пошуку по документу - $averageTime" -ForegroundColor Cyan
