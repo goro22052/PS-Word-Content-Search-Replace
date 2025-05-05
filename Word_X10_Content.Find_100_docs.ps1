@@ -1,12 +1,11 @@
 $totalTimes = 10
-$times = 100
-$docPath = "\\kyv-s-f02\FileShare\Папка обміну\IT\Насіння Кредит Застава Гривня ТАР з 10 05 2023.docx"
+$times = 30
+$docPath = "C:\Users\Holubenko.Roman\Desktop\Обновление Zabbix 6.0 до 7.0_.docx"
 $oldWord = "Вступ"
 $newWord = "!!!!!!!!"
 $SummaryTime = 0
-$hostName = $env:COMPUTERNAME
 
-Write-Host "Тестування Word.Content.Find. $totalTimes тестів по $times ітерацій. На $hostName = $env:COMPUTERNAME." -ForegroundColor Green
+Write-Host "Тестування Word.Content.Find. $totalTimes тестів по $times ітерацій. На $env:COMPUTERNAME." -ForegroundColor Cyan
 
 for ($j = 1; $j -le $totalTimes; $j++) {
     $dt = Get-Date
@@ -84,4 +83,4 @@ for ($j = 1; $j -le $totalTimes; $j++) {
 }
 
 $averageTime = $SummaryTime / $totalTimes
-Write-Host "Всі тести завершено. Середній час виконання 100 ітерацій пошуку по документу - $averageTime" -ForegroundColor Cyan
+Write-Host "Всі тести завершено. Середній час виконання $times ітерацій пошуку по документу - $averageTime секунд" -ForegroundColor Cyan
